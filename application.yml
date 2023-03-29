@@ -1,8 +1,51 @@
+abh:
+  scheme: https
+  baseUrl: api-edc-int.mercedes-benz.com/ergde/v1
+  releases:
+    url: releases/{gcApprovalNumber}
+  attachments:
+    url: attachments/{id}
+  apiKey: 252feeb0-beb8-49fd-b543-2cc8f86fccb8
+
+bass:
+  proxy:
+    url: security-proxy.ce.cloud.corpintra.net
+    port: 3128
+    username: 2044-r
+    password: nopwd
+
+app:
+  kafka:
+    consumer:
+      topic: event.vandc.globalorderreplication.confidential.dev
+      groupId: bbm-bass-int.group
 spring:
+  kafka:
+    bootstrap-servers: kafka.eventhub.btf-hub.nonprod.ce.cloud.corpintra.net:9094
+    ssl:
+      protocol: SSL
+      key-store-location : /configs/keystore.p12
+      key-store-password : pb308hc0WrWg
+      key-store-type : PKCS12
+      trust-store-location : /configs/truststore.p12
+      trust-store-password : fhaqH2hVBzJ8
+      trust-store-type : PKCS12
+      endpoint:
+        identification:
+          algorithm : ""
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://bass-dev-postgres.cn225wof2udv.eu-central-1.rds.amazonaws.com:5432/bassDev
+    username: master
+    password: 39oV6WlJEGOax41a
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+
+
+
+
+
+
